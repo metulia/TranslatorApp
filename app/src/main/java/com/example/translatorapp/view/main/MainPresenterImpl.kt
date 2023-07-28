@@ -10,7 +10,6 @@ import com.example.translatorapp.view.base.View
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.observers.DisposableObserver
 
-
 class MainPresenterImpl<T : AppState, V : View>(
     private val interactor: MainInteractor = MainInteractor(
         RepositoryImpl(DataSourceRemote()),
@@ -19,6 +18,7 @@ class MainPresenterImpl<T : AppState, V : View>(
     protected val compositeDisposable: CompositeDisposable = CompositeDisposable(),
     protected val schedulerProvider: SchedulerProvider = SchedulerProvider()
 ) : Presenter<T, V> {
+
     private var currentView: V? = null
 
     override fun attachView(view: V) {
