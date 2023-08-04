@@ -6,7 +6,6 @@ import com.example.translatorapp.model.repository.Repository
 import com.example.translatorapp.presenter.Interactor
 import io.reactivex.rxjava3.core.Observable
 
-
 class MainInteractor(
     private val remoteRepository: Repository<List<DataModel>>,
     private val localRepository: Repository<List<DataModel>>
