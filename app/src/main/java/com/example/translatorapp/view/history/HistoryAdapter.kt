@@ -1,18 +1,15 @@
-package com.example.translatorapp.view.main
+package com.example.translatorapp.view.history
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.translatorapp.R
 import com.example.translatorapp.model.data.DataModel
-import com.example.translatorapp.utils.ui.convertMeaningsToString
 
-class MainAdapter(
-    private var onListItemClickListener: OnListItemClickListener
-) :
-    RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
+class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
     private var data: List<DataModel> = arrayListOf()
 
@@ -24,12 +21,12 @@ class MainAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerItemViewHolder {
         return RecyclerItemViewHolder(
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.activity_main_recyclerview_item, parent, false) as View
+                .inflate(R.layout.activity_history_recyclerview_item, parent, false) as View
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerItemViewHolder, position: Int) {
-        holder.bind(data.get(position))
+        holder.bind(data[position])
     }
 
     override fun getItemCount(): Int {
@@ -40,15 +37,13 @@ class MainAdapter(
 
         fun bind(data: DataModel) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
-                itemView.findViewById<TextView>(R.id.header_textview_recycler_item).text = data.text
-                itemView.findViewById<TextView>(R.id.description_textview_recycler_item).text =
-                    convertMeaningsToString(data.meanings!!)
-                itemView.setOnClickListener { openInNewWindow(data) }
+                itemView.findViewById<TextView>(R.id.header_history_textview_recycler_item).text =
+                    data.text
+                itemView.setOnClickListener {
+                    Toast.makeText(itemView.context, "on click: ${data.text}", Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         }
-    }
-
-    private fun openInNewWindow(listItemData: DataModel) {
-        onListItemClickListener.onItemClick(listItemData)
     }
 }
