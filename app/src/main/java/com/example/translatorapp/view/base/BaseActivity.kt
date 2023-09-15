@@ -8,8 +8,6 @@ import com.example.translatorapp.R
 import com.example.translatorapp.databinding.LoadingLayoutBinding
 import com.example.translatorapp.model.AppState
 import com.example.translatorapp.model.data.DataModel
-import com.example.translatorapp.utils.network.isOnline
-import com.example.translatorapp.utils.ui.AlertDialogFragment
 import com.example.translatorapp.viewmodel.BaseViewModel
 import com.example.translatorapp.viewmodel.Interactor
 
@@ -22,14 +20,14 @@ abstract class BaseActivity<T : AppState, I : Interactor<T>> : AppCompatActivity
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        isNetworkAvailable = isOnline(applicationContext)
+        isNetworkAvailable = com.example.utils.network.isOnline(applicationContext)
     }
 
     override fun onResume() {
         super.onResume()
         binding = LoadingLayoutBinding.inflate(layoutInflater)
 
-        isNetworkAvailable = isOnline(applicationContext)
+        isNetworkAvailable = com.example.utils.network.isOnline(applicationContext)
         if (!isNetworkAvailable && isDialogNull()) {
             showNoInternetConnectionDialog()
         }

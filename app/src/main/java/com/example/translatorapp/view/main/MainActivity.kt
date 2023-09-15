@@ -11,7 +11,7 @@ import com.example.translatorapp.R
 import com.example.translatorapp.databinding.ActivityMainBinding
 import com.example.translatorapp.model.AppState
 import com.example.translatorapp.model.data.DataModel
-import com.example.translatorapp.utils.network.isOnline
+import com.example.utils.network.isOnline
 import com.example.translatorapp.utils.ui.convertMeaningsToString
 import com.example.translatorapp.view.base.BaseActivity
 import com.example.translatorapp.view.description.DescriptionActivity
@@ -51,7 +51,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     private val onSearchClickListener: SearchDialogFragment.OnSearchClickListener =
         object : SearchDialogFragment.OnSearchClickListener {
             override fun onClick(searchWord: String) {
-                isNetworkAvailable = isOnline(applicationContext)
+                isNetworkAvailable = com.example.utils.network.isOnline(applicationContext)
                 if (isNetworkAvailable) {
                     model.getData(searchWord, isNetworkAvailable)
                 } else {

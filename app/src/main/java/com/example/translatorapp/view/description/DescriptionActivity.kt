@@ -18,7 +18,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 import com.example.translatorapp.R
 import com.example.translatorapp.databinding.ActivityDescriptionBinding
-import com.example.translatorapp.utils.network.isOnline
+import com.example.utils.network.isOnline
 import com.example.translatorapp.utils.ui.AlertDialogFragment
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -68,7 +68,7 @@ class DescriptionActivity : AppCompatActivity() {
     }
 
     private fun startLoadingOrShowError() {
-        if (isOnline(applicationContext)) {
+        if (com.example.utils.network.isOnline(applicationContext)) {
             setData()
         } else {
             AlertDialogFragment.newInstance(
