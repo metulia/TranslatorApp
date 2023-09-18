@@ -9,10 +9,9 @@ import androidx.lifecycle.Observer
 import com.example.translatorapp.BuildConfig.BOTTOM_SHEET_FRAGMENT_DIALOG_KEY
 import com.example.translatorapp.R
 import com.example.translatorapp.databinding.ActivityMainBinding
-import com.example.translatorapp.model.AppState
-import com.example.translatorapp.model.data.DataModel
-import com.example.translatorapp.utils.ui.convertMeaningsToString
-import com.example.translatorapp.view.base.BaseActivity
+import com.example.repository.convertMeaningsToString
+import com.example.core.BaseActivity
+import com.example.model.AppState
 import com.example.translatorapp.view.description.DescriptionActivity
 import com.example.translatorapp.view.history.HistoryActivity
 import com.example.translatorapp.viewmodel.main.MainInteractor
@@ -20,7 +19,7 @@ import com.example.translatorapp.viewmodel.main.MainViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : BaseActivity<AppState, MainInteractor>() {
+class MainActivity : com.example.core.BaseActivity<AppState, MainInteractor>() {
 
     private lateinit var binding: ActivityMainBinding
     override lateinit var model: MainViewModel
@@ -35,13 +34,13 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
 
     private val onListItemClickListener: OnListItemClickListener =
         object : OnListItemClickListener {
-            override fun onItemClick(data: DataModel) {
+            override fun onItemClick(data: com.example.model.data.DataModel) {
                 startActivity(
                     DescriptionActivity.getIntent(
                         this@MainActivity,
                         data.text!!,
                         convertMeaningsToString(data.meanings!!),
-                        data.meanings[0].imageUrl
+                        data.meanings!![0].imageUrl
                     )
                 )
             }
@@ -68,7 +67,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
         initViews()
     }
 
-    override fun setDataToAdapter(data: List<DataModel>) {
+    override fun setDataToAdapter(data: List<com.example.model.data.DataModel>) {
         adapter.setData(data)
     }
 
@@ -94,7 +93,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
 
         val viewModel: MainViewModel by viewModel()
         model = viewModel
-        model.subscribe().observe(this@MainActivity, Observer<AppState> { renderData(it) })
+        model.subscribe().observe(this@MainActivity, Observer<com.example.model.AppState> { renderData(it) })
     }
 
     private fun initViews() {

@@ -3,14 +3,13 @@ package com.example.translatorapp.view.history
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.example.translatorapp.databinding.ActivityHistoryBinding
-import com.example.translatorapp.model.AppState
-import com.example.translatorapp.model.data.DataModel
-import com.example.translatorapp.view.base.BaseActivity
+import com.example.core.BaseActivity
+import com.example.model.AppState
 import com.example.translatorapp.viewmodel.history.HistoryInteractor
 import com.example.translatorapp.viewmodel.history.HistoryViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
+class HistoryActivity : com.example.core.BaseActivity<AppState, HistoryInteractor>() {
     private lateinit var binding: ActivityHistoryBinding
     override lateinit var model: HistoryViewModel
     private val adapter: HistoryAdapter by lazy { HistoryAdapter() }
@@ -29,7 +28,7 @@ class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
         model.getData("", false)
     }
 
-    override fun setDataToAdapter(data: List<DataModel>) {
+    override fun setDataToAdapter(data: List<com.example.model.data.DataModel>) {
         adapter.setData(data)
     }
 
@@ -39,7 +38,7 @@ class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
         }
         val viewModel: HistoryViewModel by viewModel()
         model = viewModel
-        model.subscribe().observe(this@HistoryActivity, Observer<AppState> { renderData(it) })
+        model.subscribe().observe(this@HistoryActivity, Observer<com.example.model.AppState> { renderData(it) })
     }
 
     private fun initViews() {

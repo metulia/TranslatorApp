@@ -47,6 +47,9 @@ android {
 dependencies {
 
     implementation project(Modules.utils)
+    implementation project(Modules.model)
+    implementation project(Modules.repository)
+    implementation project(Modules.core)
 
     implementation Kotlin.core
     implementation Design.appcompat
@@ -55,9 +58,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation TestImpl.junit
+    androidTestImplementation TestImpl.runner
+    androidTestImplementation TestImpl.espresso
 
     // Retrofit 2
     implementation Retrofit.retrofit
