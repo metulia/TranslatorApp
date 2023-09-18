@@ -10,6 +10,7 @@ import com.example.translatorapp.model.AppState
 import com.example.translatorapp.model.data.DataModel
 import com.example.translatorapp.viewmodel.BaseViewModel
 import com.example.translatorapp.viewmodel.Interactor
+import com.example.utils.ui.AlertDialogFragment
 
 private const val DIALOG_FRAGMENT_TAG = "74a54328-5d62-46bf-ab6b-cbf5d8c79522"
 

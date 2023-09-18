@@ -11,7 +11,6 @@ import com.example.translatorapp.R
 import com.example.translatorapp.databinding.ActivityMainBinding
 import com.example.translatorapp.model.AppState
 import com.example.translatorapp.model.data.DataModel
-import com.example.utils.network.isOnline
 import com.example.translatorapp.utils.ui.convertMeaningsToString
 import com.example.translatorapp.view.base.BaseActivity
 import com.example.translatorapp.view.description.DescriptionActivity

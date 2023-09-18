@@ -1,23 +1,20 @@
 import org.gradle.api.JavaVersion
 
 object Config {
-    const val application_id = "com.example.translatorapp"
-    const val compile_sdk = 33
-    const val min_sdk = 26
-    const val target_sdk = 33
+    const val applicationId = "com.example.translatorapp"
+    const val compileSdk = 33
+    const val minSdk = 26
+    const val targetSdk = 33
     val java_version = JavaVersion.VERSION_1_8
 }
 
 object Releases {
-    const val version_code = 1
-    const val version_name = "1.0"
+    const val versionCode = 1
+    const val versionName = "1.0"
 }
 
 object Modules {
     const val app = ":app"
-    const val core = ":core"
-    const val model = ":model"
-    const val repository = ":repository"
     const val utils = ":utils"
 }
 
@@ -75,9 +72,9 @@ object Retrofit {
 }
 
 object Koin {
-    const val koin_android = "org.koin:koin-android:${Versions.koinAndroid}"
-    const val koin_view_model =
-        "org.koin:koin-android-viewmodel:${Versions.koinViewModel}"
+    const val koin_android = "io.insert-koin:koin-core:${Versions.koinAndroid}"
+    const val koin_view_model = "io.insert-koin:koin-android:${Versions.koinViewModel}"
+    const val koin_java_compat = "io.insert-koin:koin-android-compat:${Versions.koinViewModel}"
 }
 
 object Coil {
