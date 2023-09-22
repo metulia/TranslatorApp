@@ -7,6 +7,7 @@ import com.example.core.databinding.LoadingLayoutBinding
 import com.example.core.viewmodel.BaseViewModel
 import com.example.core.viewmodel.Interactor
 import com.example.model.AppState
+import com.example.model.data.DataModel
 import com.example.utils.ui.AlertDialogFragment
 import org.koin.androidx.scope.ScopeActivity
 
@@ -89,5 +90,5 @@ abstract class BaseActivity<T : AppState, I : Interactor<T>> : ScopeActivity() {
         return supportFragmentManager.findFragmentByTag(DIALOG_FRAGMENT_TAG) == null
     }
 
-    abstract fun setDataToAdapter(data: List<com.example.model.data.DataModel>)
+    abstract fun setDataToAdapter(data: List<DataModel>)
 }

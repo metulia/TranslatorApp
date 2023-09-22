@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.example.core.BaseActivity
 import com.example.model.AppState
+import com.example.model.data.DataModel
+import com.example.model.dto.SearchResultDto
 import com.example.translatorapp.databinding.ActivityHistoryBinding
 import com.example.translatorapp.viewmodel.history.HistoryInteractor
 import com.example.translatorapp.viewmodel.history.HistoryViewModel
@@ -28,7 +30,7 @@ class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
         model.getData("", false)
     }
 
-    override fun setDataToAdapter(data: List<com.example.model.data.DataModel>) {
+    override fun setDataToAdapter(data: List<DataModel>) {
         adapter.setData(data)
     }
 

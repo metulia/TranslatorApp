@@ -1,7 +1,7 @@
 package com.example.translatorapp.di
 
 import androidx.room.Room
-import com.example.model.data.DataModel
+import com.example.model.dto.SearchResultDto
 import com.example.translatorapp.view.history.HistoryActivity
 import com.example.translatorapp.view.main.MainActivity
 import com.example.translatorapp.viewmodel.history.HistoryInteractor
@@ -22,12 +22,12 @@ val application = module {
     }
     single { get<com.example.repository.room.HistoryDataBase>().historyDao() }
 
-    single<com.example.repository.Repository<List<DataModel>>> {
+    single<com.example.repository.Repository<List<SearchResultDto>>> {
         com.example.repository.RepositoryImpl(
             com.example.repository.datasource.RetrofitImpl()
         )
     }
-    single<com.example.repository.RepositoryLocal<List<DataModel>>> {
+    single<com.example.repository.RepositoryLocal<List<SearchResultDto>>> {
         com.example.repository.RepositoryLocalImpl(
             com.example.repository.datasource.RoomDataBaseImpl(get())
         )
