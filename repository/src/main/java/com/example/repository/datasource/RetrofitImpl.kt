@@ -1,6 +1,6 @@
 package com.example.repository.datasource
 
-import com.example.model.data.DataModel
+import com.example.model.dto.SearchResultDto
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -8,9 +8,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RetrofitImpl : DataSource<List<DataModel>> {
+class RetrofitImpl : DataSource<List<SearchResultDto>> {
 
-    override suspend fun getData(word: String): List<com.example.model.data.DataModel> {
+    override suspend fun getData(word: String): List<SearchResultDto> {
         return getService(BaseInterceptor.interceptor).searchAsync(word).await()
     }
 
