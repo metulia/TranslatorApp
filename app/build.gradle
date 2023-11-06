@@ -59,10 +59,13 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation 'com.google.ar:core:1.40.0'
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.runner
     androidTestImplementation TestImpl.espresso
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // Retrofit 2
     implementation Retrofit.retrofit
